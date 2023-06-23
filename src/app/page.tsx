@@ -1,3 +1,4 @@
+import { Wrapper } from "@/components/Wrapper";
 import { prisma } from "@/lib/db";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { getServerSession } from "next-auth/next";
@@ -7,11 +8,13 @@ export default async function Home() {
   const session = await getServerSession(authOptions);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <Print object={koroks} />
+    <Wrapper>
+      <main className="flex flex-col items-center justify-between p-24">
+        <Print object={koroks} />
 
-      <Print object={session} />
-    </main>
+        <Print object={session} />
+      </main>
+    </Wrapper>
   );
 }
 
@@ -24,5 +27,5 @@ function Print({ object }: { object: any }) {
     );
   }
 
-  return <strong>{JSON.stringify(object, null, 2)}</strong>;
+  return <code>{JSON.stringify(object, null, 2)}</code>;
 }
