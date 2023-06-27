@@ -41,13 +41,14 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  id            String      @id @default(auto()) @map("_id") @db.ObjectId
   name          String?
-  email         String?   @unique
+  email         String?     @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
+  Character     Character[]
 }
 
 model VerificationToken {
@@ -57,4 +58,72 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Character {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String @db.ObjectId
+  name   String
+
+  tokenOfHeroism TokenOfHeroism
+
+  // traits
+  power   Power
+  wisdom  Wisdom
+  courage Courage
+
+  hitPoint     Point
+  manaPoint    Point
+  staminaPoint Point
+
+  user User @relation(fields: [userId], references: [id])
+}
+
+type Point {
+  current   Int
+  maximum   Int
+  temporary Int
+}
+
+type TokenOfHeroism {
+  available Int
+  total     Int
+}
+
+type Power {
+  combat       Trait
+  hearts       Trait
+  athletics    Trait
+  civilization Trait
+  fortitude    Trait
+  intimidate   Trait
+  mechanics    Trait
+  smithing     Trait
+}
+
+type Wisdom {
+  willpower  Trait
+  magic      Trait
+  arcana     Trait
+  perception Trait
+  influence  Trait
+  perform    Trait
+  discipline Trait
+  enchanting Trait
+}
+
+type Courage {
+  accuracy Trait
+  stamina  Trait
+  nature   Trait
+  agility  Trait
+  command  Trait
+  insight  Trait
+  guile    Trait
+  cooking  Trait
+}
+
+type Trait {
+  trait Int
+  bonus Int
 }

@@ -8,9 +8,9 @@ export type AppHeaderProps = {
 export default async function AppHeader({ session }: AppHeaderProps) {
   return (
     <header className="border-b-2 border-gray-900 dark:border-gray-50">
-      <Wrapper className="flex flex-row justify-between items-center py-4">
+      <Wrapper className="flex flex-row items-center justify-between py-4">
         <img
-          className="dark:invert h-14"
+          className="h-14 dark:invert"
           src="https://reclaimthewild.net/wp-content/uploads/2018/12/logo-with-die.png"
           alt="Reclaiming the Wild logo"
         />
@@ -33,7 +33,7 @@ function SessionHeaderItem({ session }: AppHeaderProps) {
         alt="User profile"
         width={48}
         height={48}
-        className="rounded-full h-12"
+        className="h-12 rounded-full"
       />
     </div>
   );
