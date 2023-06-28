@@ -3,7 +3,7 @@
 import { BarContainer } from "./BarContainer";
 import type { PointContainerProps } from "./type";
 
-export function ManaContainer(props: PointContainerProps) {
+export function MagicContainer(props: PointContainerProps) {
   return (
     <div>
       <p>Magic</p>

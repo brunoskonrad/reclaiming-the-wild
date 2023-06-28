@@ -1,5 +1,5 @@
 import { HeartContainer } from "@/components/PointContainer/HeartContainer";
-import { ManaContainer } from "@/components/PointContainer/ManaContainer";
+import { MagicContainer } from "@/components/PointContainer/MagicContainer";
 import { StaminaContainer } from "@/components/PointContainer/StaminaContainer";
 import { Wrapper } from "@/components/Wrapper";
 import { prisma } from "@/lib/db";
@@ -17,24 +17,24 @@ export default async function Home() {
 
         <HeartContainer
           point={{
-            current: 22,
-            maximum: 40,
-            temporary: 11,
+            current: 12,
+            maximum: 12,
+            temporary: 0,
           }}
         />
 
-        <ManaContainer
+        <MagicContainer
           point={{
-            current: 2,
-            maximum: 40,
+            current: 0,
+            maximum: 0,
             temporary: 0,
           }}
         />
 
         <StaminaContainer
           point={{
-            current: 32,
-            maximum: 40,
+            current: 0,
+            maximum: 0,
             temporary: 0,
           }}
         />
