@@ -1,6 +1,3 @@
-import { HeartContainer } from "@/components/PointContainer/HeartContainer";
-import { MagicContainer } from "@/components/PointContainer/MagicContainer";
-import { StaminaContainer } from "@/components/PointContainer/StaminaContainer";
 import { Wrapper } from "@/components/Wrapper";
 import { prisma } from "@/lib/db";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
@@ -14,30 +11,6 @@ export default async function Home() {
     <Wrapper>
       <main className="flex flex-col items-start justify-between">
         {/* <Print object={koroks} /> */}
-
-        <HeartContainer
-          point={{
-            current: 12,
-            maximum: 12,
-            temporary: 0,
-          }}
-        />
-
-        <MagicContainer
-          point={{
-            current: 0,
-            maximum: 0,
-            temporary: 0,
-          }}
-        />
-
-        <StaminaContainer
-          point={{
-            current: 0,
-            maximum: 0,
-            temporary: 0,
-          }}
-        />
 
         <Print object={session} />
       </main>

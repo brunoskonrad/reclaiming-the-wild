@@ -1,5 +1,6 @@
 import { Session } from "next-auth";
 import { Wrapper } from "./Wrapper";
+import Link from "next/link";
 
 export type AppHeaderProps = {
   session: Session | null;
@@ -9,11 +10,13 @@ export default async function AppHeader({ session }: AppHeaderProps) {
   return (
     <header className="border-b-2 border-gray-900 dark:border-gray-50">
       <Wrapper className="flex flex-row items-center justify-between py-4">
-        <img
-          className="h-14 dark:invert"
-          src="https://reclaimthewild.net/wp-content/uploads/2018/12/logo-with-die.png"
-          alt="Reclaiming the Wild logo"
-        />
+        <Link href="/">
+          <img
+            className="h-14 dark:invert"
+            src="https://reclaimthewild.net/wp-content/uploads/2018/12/logo-with-die.png"
+            alt="Reclaiming the Wild logo"
+          />
+        </Link>
 
         <SessionHeaderItem session={session} />
       </Wrapper>

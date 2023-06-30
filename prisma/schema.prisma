@@ -42,7 +42,7 @@ model Session {
 
 model User {
   id            String      @id @default(auto()) @map("_id") @db.ObjectId
-  name          String?
+  name          String?     @unique
   email         String?     @unique
   emailVerified DateTime?
   image         String?
@@ -61,9 +61,10 @@ model VerificationToken {
 }
 
 model Character {
-  id     String @id @default(auto()) @map("_id") @db.ObjectId
-  userId String @db.ObjectId
-  name   String
+  id     String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId String  @db.ObjectId
+  name   String?
+  raceId String  @db.ObjectId
 
   tokenOfHeroism TokenOfHeroism
 
@@ -77,12 +78,13 @@ model Character {
   staminaPoint Point
 
   user User @relation(fields: [userId], references: [id])
+  race Race @relation(fields: [raceId], references: [id])
 }
 
 type Point {
   current   Int
   maximum   Int
-  temporary Int
+  temporary Int @default(0)
 }
 
 type TokenOfHeroism {
@@ -124,6 +126,25 @@ type Courage {
 }
 
 type Trait {
-  trait Int
-  bonus Int
+  trait Int @default(1)
+  bonus Int @default(0)
+}
+
+model Race {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  primary       Boolean     @default(true)
+  name          String      @unique
+  vulnerability Element
+  Character     Character[]
+}
+
+enum Element {
+  Light
+  Earth
+  Dark
+  Water
+  Fire
+  Ice
+  Shock
 }
