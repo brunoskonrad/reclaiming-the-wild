@@ -29,7 +29,9 @@ function SessionHeaderItem({ session }: AppHeaderProps) {
 
   return (
     <div className="flex flex-row items-center">
-      <span className="mr-2">{session.user.name}</span>
+      <span className="mr-2" data-testid="username">
+        {session.user.name}
+      </span>
 
       <img
         src={session.user?.image}
