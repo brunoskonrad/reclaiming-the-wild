@@ -5,11 +5,13 @@ export function countTokensOfHeroism(traits: Traits): number {
     ...Object.values(traits.courage),
     ...Object.values(traits.wisdom),
     ...Object.values(traits.power),
-  ];
+  ].map((trait) => trait.trait);
 
-  return allTraits.reduce((total, trait) => {
-    return rule(trait.trait) + total;
-  }, 0);
+  return countSpentTokensOfHeroism(allTraits);
+}
+
+export function countSpentTokensOfHeroism(traits: number[]): number {
+  return traits.reduce((total, value) => rule(value) + total, 0);
 }
 
 function rule(input: number): number {
