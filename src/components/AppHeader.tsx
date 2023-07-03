@@ -12,7 +12,7 @@ export default async function AppHeader({ session }: AppHeaderProps) {
       <Wrapper className="flex flex-row items-center justify-between py-4">
         <Link href="/">
           <img
-            className="h-14 dark:invert"
+            className="h-8 md:h-14 dark:invert"
             src="https://reclaimthewild.net/wp-content/uploads/2018/12/logo-with-die.png"
             alt="Reclaiming the Wild logo"
           />

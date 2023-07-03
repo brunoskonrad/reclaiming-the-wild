@@ -64,5 +64,5 @@ export async function createCharacter(data: FormData) {
     },
   });
 
-  redirect(`/charactes/${result.id}`);
+  redirect(`/characters/${result.id}`);
 }

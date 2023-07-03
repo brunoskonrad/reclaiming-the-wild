@@ -1,7 +1,7 @@
 import { Wrapper } from "@/components/Wrapper";
 import { prisma } from "@/lib/db";
 import { createCharacter } from "./actions";
-import { TraitsInput } from "./TraitsInput";
+import { TraitsInput } from "./components/TraitsInput";
 
 export default async function NewCharacter() {
   const races = await prisma.race.findMany({
