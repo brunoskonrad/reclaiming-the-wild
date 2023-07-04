@@ -1,5 +1,8 @@
-import { countTokensOfHeroism } from "./countTokensOfHeroism";
-import type { Traits } from "./types";
+import {
+  countTokensOfHeroism,
+  rule,
+  calculateMaximumAvailableTrait,
+} from "./countTokensOfHeroism";
 
 describe("src/features/character/countTokensOfHeroism.ts", () => {
   it("returns 0 when all traits are 0", () => {
@@ -74,5 +77,17 @@ describe("src/features/character/countTokensOfHeroism.ts", () => {
     };
 
     expect(countTokensOfHeroism(fixture)).toBe(80);
+  });
+});
+
+describe("rule", () => {
+  test("from 2 to 3 returns 3", () => expect(rule(3, 2)).toBe(3));
+  test("from 1 to 3 returns 5", () => expect(rule(3, 1)).toBe(5));
+});
+
+describe("calculateMaximumAvailableTrait", () => {
+  test("manyCases", () => {
+    expect(calculateMaximumAvailableTrait(3, 2)).toBe(3);
+    expect(calculateMaximumAvailableTrait(5, 3)).toBe(4);
   });
 });

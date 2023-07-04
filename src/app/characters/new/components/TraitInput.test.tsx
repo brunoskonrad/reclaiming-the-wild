@@ -1,7 +1,7 @@
 import { ReactElement, JSXElementConstructor } from "react";
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { TraitInput } from "./PureTraitInput";
+import { TraitInput } from "./TraitInput";
 
 describe("src/app/characters/new/components/TraitInput", () => {
   test("select maximum trait", async () => {
@@ -60,9 +60,11 @@ describe("src/app/characters/new/components/TraitInput", () => {
   });
 
   test("handles invalid input", async () => {
-    const validateTrait = jest.fn().mockImplementation((value: number) => {
-      return value <= 2;
-    });
+    const validateTrait = jest
+      .fn()
+      .mockImplementation((_value: number, nextValue: number) => {
+        return nextValue <= 2;
+      });
     const { subject, getOption } = setup(
       <TraitInput
         cap={5}

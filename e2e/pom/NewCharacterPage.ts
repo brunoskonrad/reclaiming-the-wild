@@ -21,7 +21,7 @@ class TraitForm extends BasePage {
   }
 
   async set(name: Trait, level: number) {
-    await this.findTrait(name).fill(level.toString());
+    await this.findTrait(name).selectOption(level.toString());
   }
 
   async get(name: Trait): Promise<number> {
